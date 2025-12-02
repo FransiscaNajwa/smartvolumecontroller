@@ -27,7 +27,7 @@ int volumeValue = 0;           // terakhir dibaca dari pot (0-100)
 volatile bool isMuted = false; // status mute
 
 // ================= CORE 0 TASK (BACA SENSOR + TOMBOL) ===================
-void TaskSensor(void *pv) {
+void TaskInput(void *pv) {
   int lastButtonState = HIGH;
   int currentButtonState = HIGH;
 
@@ -145,7 +145,7 @@ void setup() {
   }
 
   // Task ke core
-  xTaskCreatePinnedToCore(TaskSensor, "Sensor", 2048, NULL, 1, NULL, 0);  // Core 0
+  xTaskCreatePinnedToCore(TaskInput, "Input", 2048, NULL, 1, NULL, 0);  // Core 0
   xTaskCreatePinnedToCore(TaskOutput, "Output", 4096, NULL, 1, NULL, 1);  // Core 1
 }
 
