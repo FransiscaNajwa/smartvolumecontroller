@@ -1,0 +1,51 @@
+{
+  "configurations": [
+    {
+      "name": "Win32",
+      "intelliSenseMode": "windows-gcc-x64",
+      "compilerPath": "",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "${env:USERPROFILE}/Documents/Arduino/libraries/**",
+        "${env:USERPROFILE}/.arduino15/packages/**",
+        "C:/Program Files (x86)/Arduino/hardware/**",
+        "C:/Program Files/Arduino/hardware/**",
+        "${env:LOCALAPPDATA}/Arduino15/packages/**",
+        "${env:USERPROFILE}/AppData/Local/Arduino15/packages/**"
+      ],
+      "defines": [
+        "ARDUINO=10805",
+        "ARDUINO_ARCH_ESP32"
+      ],
+      "browse": {
+        "path": [
+          "${workspaceFolder}",
+          "${env:USERPROFILE}/Documents/Arduino/libraries",
+          "${env:USERPROFILE}/.arduino15/packages"
+        ],
+        "limitSymbolsToIncludedHeaders": true,
+        "databaseFilename": "${workspaceFolder}/.vscode/browse.vc.db"
+      }
+    }
+  ],
+  "version": 4
+}{
+  "configurations": [
+    {
+      "name": "windows-gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "compilerPath": "gcc",
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "intelliSenseMode": "windows-gcc-x64",
+      "compilerArgs": [
+        ""
+      ]
+    }
+  ],
+  "version": 4
+}

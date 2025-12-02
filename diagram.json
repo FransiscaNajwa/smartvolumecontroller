@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "author": "Putri Cahyani",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-s3-devkitc-1", "id": "esp", "top": -19.2, "left": 19.2, "attrs": {} },
+    {
+      "type": "wokwi-oled128x64",
+      "id": "oled1",
+      "top": -80,
+      "left": 200,
+      "attrs": { "i2cAddress": "0x3C" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -70.8,
+      "left": 195.8,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer1",
+      "top": -199.2,
+      "left": -113.4,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 342.2,
+      "left": -115.2,
+      "attrs": { "color": "green" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 267.5, "left": -221, "attrs": {} },
+    { "type": "wokwi-ky-040", "id": "encoder1", "top": 164.9, "left": -298.4, "attrs": {} },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper1",
+      "top": -73.19,
+      "left": 365.23,
+      "attrs": { "size": "17" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": -165.2, "left": -19.2, "attrs": {} },
+    { "type": "wokwi-a4988", "id": "drv1", "top": 120, "left": 187.2, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 275,
+      "left": -115.2,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -70.8,
+      "left": 253.4,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": -70.8,
+      "left": 301.4,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled2",
+      "top": 70.34,
+      "left": -297.37,
+      "attrs": { "i2cAddress": "0x3c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "led1:C", "esp:GND.2", "black", [ "v38.4", "h-57.2" ] ],
+    [ "led2:C", "esp:GND.2", "black", [ "v38.4", "h-172.4" ] ],
+    [ "led3:C", "esp:GND.2", "black", [ "v0" ] ],
+    [ "stepper1:A-", "drv1:2B", "green", [ "v0" ] ],
+    [ "stepper1:A+", "drv1:2A", "green", [ "v0" ] ],
+    [ "stepper1:B+", "drv1:1A", "green", [ "v0" ] ],
+    [ "stepper1:B-", "drv1:1B", "green", [ "v0" ] ],
+    [ "drv1:MS1", "esp:GND.4", "black", [ "h-67.2", "v76.8" ] ],
+    [ "drv1:MS2", "esp:GND.4", "black", [ "h-67.2", "v67.2" ] ],
+    [ "drv1:MS3", "esp:GND.4", "black", [ "h-67.2", "v57.6" ] ],
+    [ "drv1:GND.1", "esp:GND.4", "black", [ "v0" ] ],
+    [ "buzzer1:2", "esp:13", "green", [ "v0" ] ],
+    [ "btn1:1.r", "esp:12", "blue", [ "v0", "h9.8", "v-182.4" ] ],
+    [ "btn2:2.r", "esp:GND.1", "black", [ "h38.6", "v-95.8" ] ],
+    [ "btn1:2.r", "esp:GND.1", "black", [ "h38.6", "v-163" ] ],
+    [ "pot1:GND", "esp:GND.1", "black", [ "v67.2", "h182.4", "v-192", "h0" ] ],
+    [ "encoder1:GND", "esp:GND.1", "black", [ "h0" ] ],
+    [ "oled2:GND", "esp:GND.1", "black", [ "v-38.4", "h-67.2", "v220.8", "h211.2", "v-48" ] ],
+    [ "led1:A", "esp:4", "yellow", [ "v0" ] ],
+    [ "led2:A", "esp:5", "magenta", [ "v0" ] ],
+    [ "led3:A", "esp:6", "green", [ "v0" ] ],
+    [ "drv1:DIR", "esp:19", "purple", [ "h0" ] ],
+    [ "oled2:SDA", "esp:17", "gold", [ "v-19.2", "h67.27", "v28.8" ] ],
+    [ "oled2:VCC", "esp:3V3.1", "orange", [ "v-67.2", "h0.15" ] ],
+    [ "esp:15", "btn2:1.r", "cyan", [ "h0" ] ],
+    [ "servo1:GND", "esp:GND.2", "black", [ "h-19.2", "v86.4", "h153.6", "v38.4" ] ],
+    [ "buzzer1:1", "esp:GND.2", "#8f4814", [ "v76.8", "h211.2", "v38.4" ] ],
+    [ "servo1:PWM", "esp:15", "green", [ "h0", "v153.8" ] ],
+    [ "servo1:V+", "esp:5V", "purple", [ "h-38.4", "v307.3" ] ],
+    [ "encoder1:VCC", "esp:3V3.1", "blue", [ "h96", "v-143.6" ] ],
+    [ "drv1:STEP", "esp:18", "#8f4814", [ "h-76.8", "v-86.4" ] ],
+    [ "drv1:RESET", "drv1:SLEEP", "green", [ "h-9.6", "v9.6" ] ],
+    [ "drv1:ENABLE", "esp:20", "green", [ "h-67.2", "v57.6" ] ],
+    [ "encoder1:SW", "esp:4", "#8f4814", [ "h76.8", "v-163.1" ] ],
+    [ "encoder1:CLK", "esp:2", "gray", [ "h144", "v-115.2" ] ],
+    [ "encoder1:DT", "esp:14", "magenta", [ "h105.6", "v9.7" ] ],
+    [ "pot1:VCC", "esp:3V3.2", "red", [ "v19.2", "h37.6", "v-336" ] ],
+    [ "oled2:SCL", "esp:8", "green", [ "v-38.4", "h86.7", "v76.8" ] ],
+    [ "pot1:SIG", "esp:3", "#8f4814", [ "v38.4", "h57.2", "v-249.6" ] ]
+  ],
+  "dependencies": {}
+}
