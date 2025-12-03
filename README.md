@@ -92,5 +92,5 @@ Tools
 ---
 
 Simulasi Wokwi : https://wokwi.com/projects/447222444492476417  
-Video Demo
-![Demo Smart Volume Control](Smart Volume Control.gif) 
+Demo Smart Volume Control
+![Demo](Smart Volume Control.gif)
