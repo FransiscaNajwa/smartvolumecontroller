@@ -1,6 +1,6 @@
-Nama Kelompok : Fransisca Najwa Putri Wibowo , Putri Cahyani Alfaiqoh
+Nama Kelompok : Fransisca Najwa Putri Wibowo , Putri Cahyani Alfaiqoh  
 Kelas         : 3 D4 Teknik Komputer A  
-NRP           : 3223600003 , 3223600007
+NRP           : 3223600003 , 3223600007  
 
 Daftar Sistem (Smart Volume Control Project)
 
@@ -91,6 +91,6 @@ Tools
 
 ---
 
-Simulasi Wokwi : https://wokwi.com/projects/447222444492476417
+Simulasi Wokwi : https://wokwi.com/projects/447222444492476417  
 Video Demo
-![Demo Smart Volume Control](Smart Volume Control.gif)
+![Demo Smart Volume Control](Smart Volume Control.gif) 
