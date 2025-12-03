@@ -44,12 +44,10 @@ Mapping Hardware
 
 ---
 
-FreeRTOS Component
-
-| Komponen  | Fungsi                                                    | Digunakan Oleh             | Keterangan Multicore                                                                                                                                   |
-| --------- | --------------------------------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Queue | Mengirim nilai *volume* & *mute* dari Core 0 → Core 1 | `TaskInput` → `TaskOutput` | Digunakan sebagai media komunikasi antar-core. Core 0 mengirim data hasil pembacaan encoder, Core 1 menerima dan memproses untuk update OLED & output. |
-| Mutex | Melindungi variabel `volumeValue` dari race condition | Core 0 & Core 1            | Saat kedua core ingin membaca/menulis variabel yang sama, mutex memastikan hanya satu core yang mengakses pada satu waktu agar data tetap konsisten.   |
+| Komponen  | Fungsi                                                               | Digunakan Oleh             | Keterangan Multicore                                                                                                                                                         |
+| --------- | -------------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Queue | Mengirim data *volume* & status *mute* dari Core 0 → Core 1          | `TaskInput` → `TaskOutput` | Digunakan sebagai sarana komunikasi antar-core. Core 0 mengirim hasil pembacaan potensiometer dan tombol, sedangkan Core 1 menerima data untuk update OLED, LED, dan buzzer. |
+| Mutex | Melindungi variabel global seperti `volumeValue` dari race condition | Core 0 & Core 1            | Saat kedua core dapat mengakses variabel yang sama, mutex memastikan hanya satu core yang membaca/menulis pada suatu waktu sehingga data tetap aman dan konsisten.           |
 
 ---
 
@@ -59,7 +57,7 @@ Langkah Percobaan
 - Push button sebagai input mute
 - OLED SSD1306 via I2C
 - LED indikator ke pin GPIO
-- Buzzer ke pin PWM
+- Buzzer
 2. Membuat program utama dengan membagi sistem menjadi dua task:
 a. Core 0 → TaskInput
     - Membaca potensiometer (volume)
@@ -92,6 +90,6 @@ Tools
 ---
 
 Simulasi Wokwi : https://wokwi.com/projects/447222444492476417  
-Demo – Smart Volume Control
+Demo  
 ![Smart Volume Control Demo](SmartVolumeControl.gif)
 
