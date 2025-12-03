@@ -57,7 +57,7 @@ Langkah Percobaan
 - Push button sebagai input mute
 - OLED SSD1306 via I2C
 - LED indikator ke pin GPIO
-- Buzzer
+- Buzzer sebagai output
 2. Membuat program utama dengan membagi sistem menjadi dua task:
 a. Core 0 → TaskInput
     - Membaca potensiometer (volume)
