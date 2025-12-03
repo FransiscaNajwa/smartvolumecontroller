@@ -8,7 +8,7 @@ Daftar Sistem (Smart Volume Control Project)
 |----|-----------------------|----------------------------|
 | 1  | OLED Display          | OLED SSD1306 (I2C)        |
 | 2  | LED Indikator         | GPIO Output               |
-| 3  | Buzzer Alarm          | PWM Speaker               |
+| 3  | Buzzer Alarm          | Alarm             |
 | 4  | Potensiometer         | ADC Input (Volume)        |
 | 5  | Push Button           | GPIO Input (Mute Toggle)  |
 | 6  | FreeRTOS Queue        | Antar-Core Communication  |
@@ -36,20 +36,20 @@ Mapping Hardware
 | Perangkat        | Pin ESP32-S3 | Mode   | Di-handle oleh Core |
 |------------------|-------------:|--------|----------------------|
 | Potensiometer | GPIO 3       | ADC     | Core 0               |
-| Push Button   | GPIO 15      | Input   | Core 0               |
+| Push Button   | GPIO 13     | Input   | Core 0               |
 | OLED SDA     | GPIO 17      | I2C     | Core 1 (TaskOutput)  |
 | OLED SCL    | GPIO 8       | I2C     | Core 1 (TaskOutput)  |
 | LED Indikator | GPIO 5       | Output  | Core 1               |
-| Buzzer     | GPIO 13      | PWM     | Core 1               |
+| Buzzer     | GPIO 13      | Output    | Core 1               |
 
 ---
 
 FreeRTOS Component
 
-| Komponen | Fungsi | Digunakan Oleh |
-|---------|--------|-----------------|
-| Queue | Mengirim nilai volume & mute dari Core 0 → Core 1 | TaskInput → TaskOutput |
-| Mutex | Melindungi variabel `volumeValue` dari race condition | Core 0 & Core 1 |
+| Komponen  | Fungsi                                                    | Digunakan Oleh             | Keterangan Multicore                                                                                                                                   |
+| --------- | --------------------------------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Queue | Mengirim nilai *volume* & *mute* dari Core 0 → Core 1 | `TaskInput` → `TaskOutput` | Digunakan sebagai media komunikasi antar-core. Core 0 mengirim data hasil pembacaan encoder, Core 1 menerima dan memproses untuk update OLED & output. |
+| Mutex | Melindungi variabel `volumeValue` dari race condition | Core 0 & Core 1            | Saat kedua core ingin membaca/menulis variabel yang sama, mutex memastikan hanya satu core yang mengakses pada satu waktu agar data tetap konsisten.   |
 
 ---
 
